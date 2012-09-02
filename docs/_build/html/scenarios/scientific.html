@@ -1,0 +1,198 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scientific Applications &mdash; pythonguide 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pythonguide 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Packaging Your Code" href="../shipping/packaging.html" />
+    <link rel="prev" title="Speed" href="speed.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../shipping/packaging.html" title="Packaging Your Code"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="speed.html" title="Speed"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pythonguide 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="scientific-applications">
+<h1>Scientific Applications<a class="headerlink" href="#scientific-applications" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
+<p>Python is frequently used for high-performance scientific applications. Python is widely used in academia
+and scientific projects because it is easy to write, and it performs really well.</p>
+<p>Due to its high performance nature, scientific computing in python often refers to external libraries, typically
+written in faster languages (like C, or FORTRAN for matrix operations). The main libraries used are NumPy and SciPy</p>
+</div>
+<div class="section" id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="numpy">
+<h3>Numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://numpy.scipy.org/">NumPy</a> is a low level library written in C (and FORTRAN) for high level mathematical functions.
+NumPy cleverly overcomes the problem of running slower algorithms on Python by using multidimensional arrays and functions that operate on arrays.
+Any algorithm can then be expressed as a function on arrays, allowing the algorithms to be run quickly.</p>
+<p>NumPy is part of the SciPy project, and is released as a separate library so people who only need the basic requirements can just use NumPy.</p>
+<p>NumPy is compatible with Python versions 2.4 through to 2.7.2 and 3.1+.</p>
+</div>
+<div class="section" id="scipy">
+<h3>SciPy<a class="headerlink" href="#scipy" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://scipy.org/">SciPy</a> is a library that uses Numpy for more mathematical function. SciPy uses NumPy arrays as its basic data structure.
+SciPy comes with modules for various commonly used tasks in scientific programing like linear algebra, integration (calculus),
+ordinary differential equation solvers and signal processing.</p>
+</div>
+<div class="section" id="enthought">
+<h3>Enthought<a class="headerlink" href="#enthought" title="Permalink to this headline">¶</a></h3>
+<p>Installing NumPy and SciPy can be a daunting task. Which is why the <a class="reference external" href="http://enthought.com/">Enthought Python distribution</a> was created. With Enthought,
+scientific python has never been easier (one click to install about 100 scientific python packages). User beware: Enthought is not free.</p>
+</div>
+<div class="section" id="matplotlib">
+<h3>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">write about matplotlib.</p>
+</div>
+</div>
+</div>
+<div class="section" id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<p>Many people who do scientific computing are on Windows. And yet many of the scientific computing packages are notoriously difficult to build and install.
+<a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">Christoph Gohlke</a> however, has compiled a list of Windows binaries for many useful Python packages.
+The list of packages has grown from a mainly scientific python resource to a more general list. It might be a good idea to check it out if you&#8217;re on Windows.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3><a href="http://python-guide.org">Python Guide</a></h3>
+<p>
+  This opinionated guide exists to provide both novice and expert Python developers a best-practice handbook to the installation, configuration, and usage of Python on a daily basis.
+</p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Scientific Applications</a><ul>
+<li><a class="reference internal" href="#context">Context</a></li>
+<li><a class="reference internal" href="#libraries">Libraries</a><ul>
+<li><a class="reference internal" href="#numpy">Numpy</a></li>
+<li><a class="reference internal" href="#scipy">SciPy</a></li>
+<li><a class="reference internal" href="#enthought">Enthought</a></li>
+<li><a class="reference internal" href="#matplotlib">Matplotlib</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="speed.html" title="previous chapter">Speed</a></li>
+      <li>Next: <a href="../shipping/packaging.html" title="next chapter">Packaging Your Code</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/scenarios/scientific.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012. A <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> Project. <a href="http://creativecommons.org/licenses/by-sa/3.0/"> Creative Commons Share-Alike 3.0</a>..
+    </div>
+    <a href="https://github.com/kennethreitz/python-guide" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+    </a>
+
+    <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
+    <script type="text/javascript">
+        new HelloBar(36402,48802);
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq2 = _gaq2 || [];
+      _gaq2.push(['_setAccount', 'UA-8742933-10']);
+      _gaq2.push(['_setDomainName', 'none']);
+      _gaq2.push(['_setAllowLinker', true]);
+      _gaq2.push(['_trackPageview']);
+
+      (function() {
+        var ga2 = document.createElement('script'); ga.type = 'text/javascript'; ga2.async = true;
+        ga2.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga2, s);
+      })();
+
+    </script>
+
+    <script type="text/javascript">
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id',
+                       '4ddc1cfaf5a1f50fcc000001');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,270 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Testing Your Code &mdash; pythonguide 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pythonguide 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Choosing a License" href="license.html" />
+    <link rel="prev" title="Documenting Your Code" href="documentation.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="license.html" title="Choosing a License"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="documentation.html" title="Documenting Your Code"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pythonguide 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="testing-your-code">
+<h1>Testing Your Code<a class="headerlink" href="#testing-your-code" title="Permalink to this headline">¶</a></h1>
+<p>Testing your code is very important.</p>
+<div class="section" id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="unittest">
+<h3>Unittest<a class="headerlink" href="#unittest" title="Permalink to this headline">¶</a></h3>
+<p>Unittest is the batteries-included test module in the Python standard library.
+Its API will be familiar to anyone who has used any of the JUnit/nUnit/CppUnit
+series of tools.</p>
+<p>Creating testcases is accomplished by subclassing a TestCase base class</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">class</span> <span class="nc">MyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As of Python 2.7 unittest also includes its own test discovery mechanisms.</p>
+<blockquote>
+<div><a class="reference external" href="http://docs.python.org/library/unittest.html">unittest in the standard library documentation</a></div></blockquote>
+</div>
+<div class="section" id="doctest">
+<h3>Doctest<a class="headerlink" href="#doctest" title="Permalink to this headline">¶</a></h3>
+<p>The doctest module searches for pieces of text that look like interactive Python
+sessions, and then executes those sessions to verify that they work exactly as
+shown.</p>
+</div>
+</div>
+<div class="section" id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="py-test">
+<h3>py.test<a class="headerlink" href="#py-test" title="Permalink to this headline">¶</a></h3>
+<p>py.test is a no-boilerplate alternative to Python&#8217;s standard unittest module.</p>
+<div class="highlight-python"><pre>$ pip install pytest</pre>
+</div>
+<p>Despite being a fully-featured and extensible test tool it boasts a simple
+syntax. Creating a test suite is as easy as writing a module with a couple of
+functions</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># content of test_sample.py</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">test_answer</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">func</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>and then running the <cite>py.test</cite> command</p>
+<div class="highlight-python"><pre>$ py.test
+=========================== test session starts ============================
+platform darwin -- Python 2.7.1 -- pytest-2.2.1
+collecting ... collected 1 items
+
+test_sample.py F
+
+================================= FAILURES =================================
+_______________________________ test_answer ________________________________
+
+    def test_answer():
+&gt;       assert func(3) == 5
+E       assert 4 == 5
+E        +  where 4 = func(3)
+
+test_sample.py:5: AssertionError
+========================= 1 failed in 0.02 seconds =========================</pre>
+</div>
+<p>far less work than would be required for the equivalent functionality with the
+unittest module!</p>
+<blockquote>
+<div><a class="reference external" href="http://pytest.org/latest/">py.test</a></div></blockquote>
+</div>
+<div class="section" id="nose">
+<h3>Nose<a class="headerlink" href="#nose" title="Permalink to this headline">¶</a></h3>
+<p>nose extends unittest to make testing easier.</p>
+<div class="highlight-python"><pre>$ pip install nose</pre>
+</div>
+<p>nose provides automatic test discovery to save you the hassle of manually
+creating test suites. It also provides numerous plugins for features such as
+xUnit-compatible test output, coverage reporting, and test selection.</p>
+<blockquote>
+<div><a class="reference external" href="http://readthedocs.org/docs/nose/en/latest/">nose</a></div></blockquote>
+</div>
+<div class="section" id="tox">
+<h3>tox<a class="headerlink" href="#tox" title="Permalink to this headline">¶</a></h3>
+<p>tox is a tool for automating test environment management and testing against multiple
+interpreter configurations</p>
+<div class="highlight-python"><pre>$ pip install tox</pre>
+</div>
+<p>tox allows you to configure complicatated multi-parameter test matrices via a
+simple ini-style configuration file.</p>
+<blockquote>
+<div><a class="reference external" href="http://tox.testrun.org/latest/">tox</a></div></blockquote>
+</div>
+<div class="section" id="unittest2">
+<h3>Unittest2<a class="headerlink" href="#unittest2" title="Permalink to this headline">¶</a></h3>
+<p>unittest2 is a a backport of Python 2.7&#8217;s unittest module which has an improved
+API and better assertions over the one available in previous versions of Python.</p>
+<p>If you&#8217;re using Python 2.6 or below, you can install it with pip</p>
+<div class="highlight-python"><pre>$ pip install unittest2</pre>
+</div>
+<p>You may want to import the module under the name unittest to make porting code
+to newer versions of the module easier in the future</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">unittest2</span> <span class="kn">as</span> <span class="nn">unittest</span>
+
+<span class="k">class</span> <span class="nc">MyTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>This way if you ever switch to a newer python version and no longer need the
+unittest2 module, you can simply change the import in your test module without
+the need to change any other code.</p>
+<blockquote>
+<div><a class="reference external" href="http://pypi.python.org/pypi/unittest2">unittest2</a></div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3><a href="http://python-guide.org">About This Guide</a></h3>
+<p>
+  This opinionated guide exists to provide both novice and expert Python developers a best-practice handbook to the installation, configuration, and usage of Python on a daily basis.
+</p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Testing Your Code</a><ul>
+<li><a class="reference internal" href="#the-basics">The Basics</a><ul>
+<li><a class="reference internal" href="#unittest">Unittest</a></li>
+<li><a class="reference internal" href="#doctest">Doctest</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tools">Tools</a><ul>
+<li><a class="reference internal" href="#py-test">py.test</a></li>
+<li><a class="reference internal" href="#nose">Nose</a></li>
+<li><a class="reference internal" href="#tox">tox</a></li>
+<li><a class="reference internal" href="#unittest2">Unittest2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="documentation.html" title="previous chapter">Documenting Your Code</a></li>
+      <li>Next: <a href="license.html" title="next chapter">Choosing a License</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/writing/tests.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011. A <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> Project.
+    </div>
+    <a href="https://github.com/kennethreitz/python-guide" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+    </a>
+
+    <script type="text/javascript">
+
+      var _gaq2 = _gaq2 || [];
+      _gaq2.push(['_setAccount', 'UA-8742933-10']);
+      _gaq2.push(['_setDomainName', 'none']);
+      _gaq2.push(['_setAllowLinker', true]);
+      _gaq2.push(['_trackPageview']);
+
+      (function() {
+        var ga2 = document.createElement('script'); ga.type = 'text/javascript'; ga2.async = true;
+        ga2.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga2, s);
+      })();
+
+    </script>
+
+    <script type="text/javascript">
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id',
+                       '4ddc1cfaf5a1f50fcc000001');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

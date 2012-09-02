@@ -1,0 +1,232 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Speed &mdash; pythonguide 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pythonguide 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Scientific Applications" href="scientific.html" />
+    <link rel="prev" title="Continuous Integration" href="ci.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="scientific.html" title="Scientific Applications"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ci.html" title="Continuous Integration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pythonguide 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="speed">
+<h1>Speed<a class="headerlink" href="#speed" title="Permalink to this headline">¶</a></h1>
+<p>CPython, the most commonly used implementation of Python, is slow for CPU bound tasks. <a class="reference external" href="http://pypy.org">PyPy</a> is fast.</p>
+<p>Using a slightly modified version of <a class="reference external" href="http://www.dabeaz.com/GIL/gilvis/measure2.py">David Beazleys</a> CPU bound test code(added loop for multiple tests), you can see the difference between CPython and PyPy&#8217;s processing.</p>
+<div class="highlight-python"><pre>PyPy
+$ ./pypy -V
+Python 2.7.1 (7773f8fc4223, Nov 18 2011, 18:47:10)
+[PyPy 1.7.0 with GCC 4.4.3]
+$ ./pypy measure2.py
+0.0683999061584
+0.0483210086823
+0.0388588905334
+0.0440690517426
+0.0695300102234</pre>
+</div>
+<div class="highlight-python"><pre>CPython
+$ ./python -V
+Python 2.7.1
+$ ./python measure2.py
+1.06774401665
+1.45412397385
+1.51485204697
+1.54693889618
+1.60109114647</pre>
+</div>
+<div class="section" id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-gil">
+<h3>The GIL<a class="headerlink" href="#the-gil" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://wiki.python.org/moin/GlobalInterpreterLock">The GIL</a> (Global Interpreter Lock) is how Python allows multiple threads to operate at the same time. Python&#8217;s
+memory management isn&#8217;t entirely thread-safe, so the GIL is requried to prevents multiple threads from running
+the same Python code at once.</p>
+<p>David Beazley has a great <a class="reference external" href="http://www.dabeaz.com/python/UnderstandingGIL.pdf">guide</a> on how the GIL operates. He also covers the <a class="reference external" href="http://www.dabeaz.com/python/NewGIL.pdf">new GIL</a> in Python 3.2. His
+results show that maximizing performance in a Python application requires a strong understanding of the GIL,
+how it affects your specific application, how many cores you have, and where your application bottlenecks are.</p>
+</div>
+<div class="section" id="c-extentions">
+<h3>C Extentions<a class="headerlink" href="#c-extentions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id1">
+<h3>The GIL<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://docs.python.org/c-api/init.html#threads">Special care</a> must be taken when writing C extensions to make sure you register your threads
+with the interpreter.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>C Extentions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cython">
+<h3>Cython<a class="headerlink" href="#cython" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="pyrex">
+<h3>Pyrex<a class="headerlink" href="#pyrex" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="shedskin">
+<h3>Shedskin?<a class="headerlink" href="#shedskin" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="threading">
+<h2>Threading<a class="headerlink" href="#threading" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Threading<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="spanwing-processes">
+<h3>Spanwing Processes<a class="headerlink" href="#spanwing-processes" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="multiprocessing">
+<h3>Multiprocessing<a class="headerlink" href="#multiprocessing" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3><a href="http://python-guide.org">Python Guide</a></h3>
+<p>
+  This opinionated guide exists to provide both novice and expert Python developers a best-practice handbook to the installation, configuration, and usage of Python on a daily basis.
+</p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Speed</a><ul>
+<li><a class="reference internal" href="#context">Context</a><ul>
+<li><a class="reference internal" href="#the-gil">The GIL</a></li>
+<li><a class="reference internal" href="#c-extentions">C Extentions</a></li>
+<li><a class="reference internal" href="#id1">The GIL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">C Extentions</a><ul>
+<li><a class="reference internal" href="#cython">Cython</a></li>
+<li><a class="reference internal" href="#pyrex">Pyrex</a></li>
+<li><a class="reference internal" href="#shedskin">Shedskin?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#threading">Threading</a><ul>
+<li><a class="reference internal" href="#id3">Threading</a></li>
+<li><a class="reference internal" href="#spanwing-processes">Spanwing Processes</a></li>
+<li><a class="reference internal" href="#multiprocessing">Multiprocessing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ci.html" title="previous chapter">Continuous Integration</a></li>
+      <li>Next: <a href="scientific.html" title="next chapter">Scientific Applications</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/scenarios/speed.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012. A <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> Project. <a href="http://creativecommons.org/licenses/by-sa/3.0/"> Creative Commons Share-Alike 3.0</a>..
+    </div>
+    <a href="https://github.com/kennethreitz/python-guide" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+    </a>
+
+    <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
+    <script type="text/javascript">
+        new HelloBar(36402,48802);
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq2 = _gaq2 || [];
+      _gaq2.push(['_setAccount', 'UA-8742933-10']);
+      _gaq2.push(['_setDomainName', 'none']);
+      _gaq2.push(['_setAllowLinker', true]);
+      _gaq2.push(['_trackPageview']);
+
+      (function() {
+        var ga2 = document.createElement('script'); ga.type = 'text/javascript'; ga2.async = true;
+        ga2.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga2, s);
+      })();
+
+    </script>
+
+    <script type="text/javascript">
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id',
+                       '4ddc1cfaf5a1f50fcc000001');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

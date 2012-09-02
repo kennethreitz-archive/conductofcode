@@ -1,0 +1,235 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Systems Administration &mdash; pythonguide 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pythonguide 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Continuous Integration" href="ci.html" />
+    <link rel="prev" title="Databases" href="db.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ci.html" title="Continuous Integration"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="db.html" title="Databases"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pythonguide 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="systems-administration">
+<h1>Systems Administration<a class="headerlink" href="#systems-administration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fabric">
+<h2>Fabric<a class="headerlink" href="#fabric" title="Permalink to this headline">¶</a></h2>
+<p>Fabric is a library for simplifying system administration tasks. While Chef
+and Puppet tend to focus on managing servers and system libraries,
+fabric is more focused on application level tasks such as deployment.</p>
+<p>Install Fabric:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pip install fabric
+</pre></div>
+</div>
+<p>The following code will create two tasks that we can use: <tt class="docutils literal"><span class="pre">memory_usage</span></tt> and
+<tt class="docutils literal"><span class="pre">deploy</span></tt>. The former will output the memory usage on each machine. The
+latter will ssh into each server, cd to our project directory, activate the
+virtual environment, pull the newest codebase, and restart the application
+server.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">fabric.api</span> <span class="kn">import</span> <span class="n">cd</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">task</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">hosts</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;my_server1&#39;</span><span class="p">,</span> <span class="s">&#39;my_server2&#39;</span><span class="p">]</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">memory_usage</span><span class="p">():</span>
+    <span class="n">run</span><span class="p">(</span><span class="s">&#39;free -m&#39;</span><span class="p">)</span>
+
+<span class="nd">@task</span>
+<span class="k">def</span> <span class="nf">deploy</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">cd</span><span class="p">(</span><span class="s">&#39;/var/www/project-env/project&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">prefix</span><span class="p">(</span><span class="s">&#39;. ../bin/activate&#39;</span><span class="p">):</span>
+            <span class="n">run</span><span class="p">(</span><span class="s">&#39;git pull&#39;</span><span class="p">)</span>
+            <span class="n">run</span><span class="p">(</span><span class="s">&#39;touch app.wsgi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the previous code saved in a file named fabfile.py, we can check memory
+usage with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>fab memory_usage
+<span class="o">[</span>my_server1<span class="o">]</span> Executing task <span class="s1">&#39;memory&#39;</span>
+<span class="o">[</span>my_server1<span class="o">]</span> run: free -m
+<span class="o">[</span>my_server1<span class="o">]</span> out:              total     used     free   shared  buffers   cached
+<span class="o">[</span>my_server1<span class="o">]</span> out: Mem:          6964     1897     5067        0      166      222
+<span class="o">[</span>my_server1<span class="o">]</span> out: -/+ buffers/cache:     1509     5455
+<span class="o">[</span>my_server1<span class="o">]</span> out: Swap:            0        0        0
+
+<span class="o">[</span>my_server2<span class="o">]</span> Executing task <span class="s1">&#39;memory&#39;</span>
+<span class="o">[</span>my_server2<span class="o">]</span> run: free -m
+<span class="o">[</span>my_server2<span class="o">]</span> out:              total     used     free   shared  buffers   cached
+<span class="o">[</span>my_server2<span class="o">]</span> out: Mem:          1666      902      764        0      180      572
+<span class="o">[</span>my_server2<span class="o">]</span> out: -/+ buffers/cache:      148     1517
+<span class="o">[</span>my_server2<span class="o">]</span> out: Swap:          895        1      894
+</pre></div>
+</div>
+<p>and we can deploy with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>fab deploy
+</pre></div>
+</div>
+<p>Additional features include parallel execution, interaction with remote
+programs, and host grouping.</p>
+</div>
+<div class="section" id="chef">
+<h2>Chef<a class="headerlink" href="#chef" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Write about Chef</p>
+</div>
+</div>
+<div class="section" id="puppet">
+<h2>Puppet<a class="headerlink" href="#puppet" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Write about Puppet</p>
+</div>
+</div>
+<div class="section" id="blueprint">
+<h2>Blueprint<a class="headerlink" href="#blueprint" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Write about Blueprint</p>
+</div>
+</div>
+<div class="section" id="buildout">
+<h2>Buildout<a class="headerlink" href="#buildout" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<p class="last">Write about Buildout</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3><a href="http://python-guide.org">Python Guide</a></h3>
+<p>
+  This opinionated guide exists to provide both novice and expert Python developers a best-practice handbook to the installation, configuration, and usage of Python on a daily basis.
+</p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Systems Administration</a><ul>
+<li><a class="reference internal" href="#fabric">Fabric</a></li>
+<li><a class="reference internal" href="#chef">Chef</a></li>
+<li><a class="reference internal" href="#puppet">Puppet</a></li>
+<li><a class="reference internal" href="#blueprint">Blueprint</a></li>
+<li><a class="reference internal" href="#buildout">Buildout</a></li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="db.html" title="previous chapter">Databases</a></li>
+      <li>Next: <a href="ci.html" title="next chapter">Continuous Integration</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/scenarios/admin.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012. A <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> Project. <a href="http://creativecommons.org/licenses/by-sa/3.0/"> Creative Commons Share-Alike 3.0</a>..
+    </div>
+    <a href="https://github.com/kennethreitz/python-guide" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+    </a>
+
+    <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
+    <script type="text/javascript">
+        new HelloBar(36402,48802);
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq2 = _gaq2 || [];
+      _gaq2.push(['_setAccount', 'UA-8742933-10']);
+      _gaq2.push(['_setDomainName', 'none']);
+      _gaq2.push(['_setAllowLinker', true]);
+      _gaq2.push(['_trackPageview']);
+
+      (function() {
+        var ga2 = document.createElement('script'); ga.type = 'text/javascript'; ga2.async = true;
+        ga2.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga2, s);
+      })();
+
+    </script>
+
+    <script type="text/javascript">
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id',
+                       '4ddc1cfaf5a1f50fcc000001');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

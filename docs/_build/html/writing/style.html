@@ -1,0 +1,184 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Code Style &mdash; pythonguide 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pythonguide 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Documenting Your Code" href="documentation.html" />
+    <link rel="prev" title="Structuring Your Project" href="structure.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="documentation.html" title="Documenting Your Code"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="structure.html" title="Structuring Your Project"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pythonguide 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="code-style">
+<h1>Code Style<a class="headerlink" href="#code-style" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="idioms">
+<h2>Idioms<a class="headerlink" href="#idioms" title="Permalink to this headline">¶</a></h2>
+<p>Idiomatic Python code is often referred to as being <em>pythonic</em>.</p>
+<div class="section" id="zen-of-python">
+<h3>Zen of Python<a class="headerlink" href="#zen-of-python" title="Permalink to this headline">¶</a></h3>
+<p>Also known as PEP 20, the guiding principles for Python&#8217;s design.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">this</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="http://stackoverflow.com/questions/228181/the-zen-of-python">http://stackoverflow.com/questions/228181/the-zen-of-python</a> for some
+examples.</p>
+</div>
+<div class="section" id="pep-8">
+<h3>PEP 8<a class="headerlink" href="#pep-8" title="Permalink to this headline">¶</a></h3>
+<p>PEP 8 is the de-facto code style guide for Python.</p>
+<blockquote>
+<div><a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">PEP 8</a></div></blockquote>
+<p>There exists a command-line program, <cite>pep8</cite> that can check your code for
+conformance.</p>
+<div class="highlight-python"><pre>pip install pep8</pre>
+</div>
+<p>Simply run it on a file or series of files and get a report of any
+violations</p>
+<div class="highlight-python"><pre>$ pep8 optparse.py
+optparse.py:69:11: E401 multiple imports on one line
+optparse.py:77:1: E302 expected 2 blank lines, found 1
+optparse.py:88:5: E301 expected 1 blank line, found 0
+optparse.py:222:34: W602 deprecated form of raising exception
+optparse.py:347:31: E211 whitespace before '('
+optparse.py:357:17: E201 whitespace after '{'
+optparse.py:472:29: E221 multiple spaces before operator
+optparse.py:544:21: W601 .has_key() is deprecated, use 'in'</pre>
+</div>
+<p>Conforming your style to PEP 8 is generally a good idea and helps make code a lot
+more consistent when working on projects with other developers.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3><a href="http://python-guide.org">About This Guide</a></h3>
+<p>
+  This opinionated guide exists to provide both novice and expert Python developers a best-practice handbook to the installation, configuration, and usage of Python on a daily basis.
+</p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Code Style</a><ul>
+<li><a class="reference internal" href="#idioms">Idioms</a><ul>
+<li><a class="reference internal" href="#zen-of-python">Zen of Python</a></li>
+<li><a class="reference internal" href="#pep-8">PEP 8</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="structure.html" title="previous chapter">Structuring Your Project</a></li>
+      <li>Next: <a href="documentation.html" title="next chapter">Documenting Your Code</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/writing/style.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011. A <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> Project.
+    </div>
+    <a href="https://github.com/kennethreitz/python-guide" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+    </a>
+
+    <script type="text/javascript">
+
+      var _gaq2 = _gaq2 || [];
+      _gaq2.push(['_setAccount', 'UA-8742933-10']);
+      _gaq2.push(['_setDomainName', 'none']);
+      _gaq2.push(['_setAllowLinker', true]);
+      _gaq2.push(['_trackPageview']);
+
+      (function() {
+        var ga2 = document.createElement('script'); ga.type = 'text/javascript'; ga2.async = true;
+        ga2.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga2, s);
+      })();
+
+    </script>
+
+    <script type="text/javascript">
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id',
+                       '4ddc1cfaf5a1f50fcc000001');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

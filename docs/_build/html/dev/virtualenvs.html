@@ -1,0 +1,263 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Virtual Environments &mdash; pythonguide 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pythonguide 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Structuring Your Project" href="../writing/structure.html" />
+    <link rel="prev" title="Your Development Environment" href="env.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../writing/structure.html" title="Structuring Your Project"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="env.html" title="Your Development Environment"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pythonguide 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="virtual-environments">
+<h1>Virtual Environments<a class="headerlink" href="#virtual-environments" title="Permalink to this headline">¶</a></h1>
+<p>A Virtual Environment, put simply, is an isolated working copy of Python which
+allows you to work on a specific project without worry of affecting other
+projects.</p>
+<p>For example, you can work on a project which requires Django 1.3 while also
+maintaining a project which requires Django 1.0.</p>
+<div class="section" id="virtualenv">
+<h2>virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://pypi.python.org/pypi/virtualenv">virtualenv</a> is a tool to create
+isolated Python environments.</p>
+<p>Install it via pip:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> pip install virtualenv
+</pre></div>
+</div>
+<div class="section" id="basic-usage">
+<h3>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Create a virtual environment:</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> virtualenv venv
+</pre></div>
+</div>
+<p>This creates a copy of Python in whichever directory you ran the command in,
+placing it in a folder named <tt class="docutils literal"><span class="pre">venv</span></tt>.</p>
+<ol class="arabic simple" start="2">
+<li>To begin using the virtual environment, it needs to be activated:</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">source </span>venv/bin/activate
+</pre></div>
+</div>
+<p>You can then begin installing any new modules without affecting the system
+default Python or other virtual environments.</p>
+<ol class="arabic simple" start="3">
+<li>If you are done working in the virtual environment for the moment, you can
+deactivate it:</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> deactivate
+</pre></div>
+</div>
+<p>This puts you back to the system&#8217;s default Python interpreter with all its
+installed libraries.</p>
+<p>To delete a virtual environment, just delete its folder.</p>
+<p>After a while, though, you might end up with a lot of virtual environments
+littered across your system, and its possible you&#8217;ll forget their names or
+where they were placed.</p>
+</div>
+</div>
+<div class="section" id="virtualenvwrapper">
+<h2>virtualenvwrapper<a class="headerlink" href="#virtualenvwrapper" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.doughellmann.com/projects/virtualenvwrapper/">virtualenvwrapper</a>
+provides a set of commands which makes working with virtual environments much
+more pleasant. It also places all your virtual environments in one place.</p>
+<p>To install (make sure <strong>virtualenv</strong> is already installed):</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> pip install virtualenvwrapper
+<span class="gp">$</span> <span class="nb">export </span><span class="nv">WORKON_HOME</span><span class="o">=</span>~/Envs
+<span class="gp">$</span> <span class="nb">source</span> /usr/local/bin/virtualenvwrapper.sh
+</pre></div>
+</div>
+<p>(<a class="reference external" href="http://www.doughellmann.com/docs/virtualenvwrapper/#introduction">Full virtualenvwrapper install instructions</a>.)</p>
+<div class="section" id="id3">
+<h3>Basic Usage<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Create a virtual environment:</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> mkvirtualenv venv
+</pre></div>
+</div>
+<p>This creates the <tt class="docutils literal"><span class="pre">venv</span></tt> folder inside <tt class="docutils literal"><span class="pre">~/Envs</span></tt>.</p>
+<ol class="arabic simple" start="2">
+<li>Work on a virtual environment:</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> workon venv
+</pre></div>
+</div>
+<p><strong>virtualenvwrapper</strong> provides tab-completion on environment names. It really
+helps when you have a lot of environments and have trouble remembering their
+names.
+<tt class="docutils literal"><span class="pre">workon</span></tt> also deactivates whatever environment you are currently in, so you
+can quickly switch between environments.</p>
+<ol class="arabic simple" start="3">
+<li>Deactivating is still the same:</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> deactivate
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>To delete:</li>
+</ol>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> rmvirtualenv venv
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-useful-commands">
+<h3>Other useful commands<a class="headerlink" href="#other-useful-commands" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">lsvirtualenv</span></tt></dt>
+<dd>List all of the environments.</dd>
+<dt><tt class="docutils literal"><span class="pre">cdvirtualenv</span></tt></dt>
+<dd>Navigate into the directory of the currently activated virtual environment,
+so you can browse its <tt class="docutils literal"><span class="pre">site-packages</span></tt>, for example.</dd>
+<dt><tt class="docutils literal"><span class="pre">cdsitepackages</span></tt></dt>
+<dd>Like the above, but directly into <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory.</dd>
+<dt><tt class="docutils literal"><span class="pre">lssitepackages</span></tt></dt>
+<dd>Shows contents of <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory.</dd>
+</dl>
+<p><a class="reference external" href="http://www.doughellmann.com/docs/virtualenvwrapper/command_ref.html#managing-environments">Full list of virtualenvwrapper commands</a>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3><a href="http://python-guide.org">Python Guide</a></h3>
+<p>
+  This opinionated guide exists to provide both novice and expert Python developers a best-practice handbook to the installation, configuration, and usage of Python on a daily basis.
+</p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Virtual Environments</a><ul>
+<li><a class="reference internal" href="#virtualenv">virtualenv</a><ul>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#virtualenvwrapper">virtualenvwrapper</a><ul>
+<li><a class="reference internal" href="#id3">Basic Usage</a></li>
+<li><a class="reference internal" href="#other-useful-commands">Other useful commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="env.html" title="previous chapter">Your Development Environment</a></li>
+      <li>Next: <a href="../writing/structure.html" title="next chapter">Structuring Your Project</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/dev/virtualenvs.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2012. A <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> Project. <a href="http://creativecommons.org/licenses/by-sa/3.0/"> Creative Commons Share-Alike 3.0</a>..
+    </div>
+    <a href="https://github.com/kennethreitz/python-guide" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+    </a>
+
+    <script type="text/javascript" src="//www.hellobar.com/hellobar.js"></script>
+    <script type="text/javascript">
+        new HelloBar(36402,48802);
+    </script>
+
+    <script type="text/javascript">
+
+      var _gaq2 = _gaq2 || [];
+      _gaq2.push(['_setAccount', 'UA-8742933-10']);
+      _gaq2.push(['_setDomainName', 'none']);
+      _gaq2.push(['_setAllowLinker', true]);
+      _gaq2.push(['_trackPageview']);
+
+      (function() {
+        var ga2 = document.createElement('script'); ga.type = 'text/javascript'; ga2.async = true;
+        ga2.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga2, s);
+      })();
+
+    </script>
+
+    <script type="text/javascript">
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id',
+                       '4ddc1cfaf5a1f50fcc000001');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>

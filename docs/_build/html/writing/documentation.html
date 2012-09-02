@@ -1,0 +1,223 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documenting Your Code &mdash; pythonguide 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="pythonguide 0.0.1 documentation" href="../index.html" />
+    <link rel="next" title="Testing Your Code" href="tests.html" />
+    <link rel="prev" title="Code Style" href="style.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tests.html" title="Testing Your Code"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="style.html" title="Code Style"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">pythonguide 0.0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="documenting-your-code">
+<h1>Documenting Your Code<a class="headerlink" href="#documenting-your-code" title="Permalink to this headline">¶</a></h1>
+<p>Documenting your code is extremely important. It is debatebly even
+more important than testing.</p>
+<div class="section" id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code-comments">
+<h3>Code Comments<a class="headerlink" href="#code-comments" title="Permalink to this headline">¶</a></h3>
+<p>Information regarding code comments is taken from PEP 008 (<a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">http://www.python.org/dev/peps/pep-0008/</a>).
+Block comment styling should be used when commenting out multiple lines of code.:</p>
+<div class="highlight-python"><pre>Block comments generally apply to some (or all) code that follows them,
+and are indented to the same level as that code.  Each line of a block
+comment starts with a # and a single space (unless it is indented text
+inside the comment).
+Paragraphs inside a block comment are separated by a line containing a
+single #.</pre>
+</div>
+<p>Inline comments are used for individual lines and should be used sparingly.:</p>
+<div class="highlight-python"><pre>An inline comment is a comment on the same line as a statement.  Inline
+comments should be separated by at least two spaces from the statement.
+They should start with a # and a single space.
+Inline comments are unnecessary and in fact distracting if they state
+the obvious.  Don't do this:
+    x = x + 1                 # Increment x
+But sometimes, this is useful: ::
+    x = x + 1                 # Compensate for border</pre>
+</div>
+</div>
+<div class="section" id="doc-strings">
+<h3>Doc Strings<a class="headerlink" href="#doc-strings" title="Permalink to this headline">¶</a></h3>
+<p>PEP 257 is the primary reference for docstrings. (<a class="reference external" href="http://www.python.org/dev/peps/pep-0257/">http://www.python.org/dev/peps/pep-0257/</a>)
+<a href="#id1"><span class="problematic" id="id2">|</span></a>There are two types of docstrings, one-line and multi-line.  Their names should be fairly self explanatory.
+<a href="#id3"><span class="problematic" id="id4">|</span></a>One-line docstrings:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">kos_root</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return the pathname of the KOS root directory.&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_kos_root</span>
+    <span class="k">if</span> <span class="n">_kos_root</span><span class="p">:</span> <span class="k">return</span> <span class="n">_kos_root</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Multi-line docstrings:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">complex</span><span class="p">(</span><span class="n">real</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">imag</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Form a complex number.</span>
+
+<span class="sd">    Keyword arguments:</span>
+<span class="sd">    real -- the real part (default 0.0)</span>
+<span class="sd">    imag -- the imaginary part (default 0.0)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">imag</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">real</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span> <span class="k">return</span> <span class="n">complex_zero</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sphinx">
+<h3>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h3>
+<p>Sphinx (<a class="reference external" href="http://sphinx.pocoo.org">http://sphinx.pocoo.org</a>) is a tool  which converts documentation in the reStructured text markup language into a range of output formats including HTML, LaTeX (for printable PDF versions), manual pages and plain text.</p>
+</div>
+</div>
+<div class="section" id="other-tools">
+<h2>Other Tools<a class="headerlink" href="#other-tools" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="that-old-thing">
+<h3>that old thing<a class="headerlink" href="#that-old-thing" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="pocco-docco-shocco">
+<h3>pocco / docco / shocco<a class="headerlink" href="#pocco-docco-shocco" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="ronn">
+<h3>Ronn<a class="headerlink" href="#ronn" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><h3><a href="http://python-guide.org">About This Guide</a></h3>
+<p>
+  This opinionated guide exists to provide both novice and expert Python developers a best-practice handbook to the installation, configuration, and usage of Python on a daily basis.
+</p>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documenting Your Code</a><ul>
+<li><a class="reference internal" href="#the-basics">The Basics</a><ul>
+<li><a class="reference internal" href="#code-comments">Code Comments</a></li>
+<li><a class="reference internal" href="#doc-strings">Doc Strings</a></li>
+<li><a class="reference internal" href="#sphinx">Sphinx</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-tools">Other Tools</a><ul>
+<li><a class="reference internal" href="#that-old-thing">that old thing</a></li>
+<li><a class="reference internal" href="#pocco-docco-shocco">pocco / docco / shocco</a></li>
+<li><a class="reference internal" href="#ronn">Ronn</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="style.html" title="previous chapter">Code Style</a></li>
+      <li>Next: <a href="tests.html" title="next chapter">Testing Your Code</a></li>
+  </ul></li>
+</ul>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/writing/documentation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011. A <a href="http://kennethreitz.com/pages/open-projects.html">Kenneth Reitz</a> Project.
+    </div>
+    <a href="https://github.com/kennethreitz/python-guide" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
+    </a>
+
+    <script type="text/javascript">
+
+      var _gaq2 = _gaq2 || [];
+      _gaq2.push(['_setAccount', 'UA-8742933-10']);
+      _gaq2.push(['_setDomainName', 'none']);
+      _gaq2.push(['_setAllowLinker', true]);
+      _gaq2.push(['_trackPageview']);
+
+      (function() {
+        var ga2 = document.createElement('script'); ga.type = 'text/javascript'; ga2.async = true;
+        ga2.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga2, s);
+      })();
+
+    </script>
+
+    <script type="text/javascript">
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id',
+                       '4ddc1cfaf5a1f50fcc000001');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+  </body>
+</html>
