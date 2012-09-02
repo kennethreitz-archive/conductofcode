@@ -1,10 +1,5 @@
-.. osxpython documentation master file, created by
-   sphinx-quickstart on Wed Aug  4 22:51:11 2010.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-The Hitchhiker's Guide to Python!
-=================================
+The Conduct of Code
+===================
 
 Welcome to The Hitchhiker's Guide to Python. `DON'T PANIC! <http://www.amazon.com/gp/product/B0043M4ZH0/ref=as_li_ss_tl?ie=UTF8&tag=bookforkind-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B0043M4ZH0>`_
 

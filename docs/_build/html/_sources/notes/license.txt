@@ -1,4 +1,0 @@
-License
--------
-
-.. todo:: Determine License
