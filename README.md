@@ -1,4 +1,4 @@
-conductofcode
-=============
+Conduct of Code
+===============
 
-The 12factor of Open Source.
+See wiki.
