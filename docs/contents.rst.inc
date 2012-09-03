@@ -1,5 +1,5 @@
-I. Philosophy
----------------
+Act I: Id
+---------
 
 This part of the guide focuses on...
 
@@ -12,8 +12,8 @@ This part of the guide focuses on...
 
 
 
-II. Open Source
----------------
+Act II: Ego
+-----------
 
 This part of the guide focuses on best practices for writing code.
 
@@ -23,8 +23,8 @@ This part of the guide focuses on best practices for writing code.
 - LICENSE
 
 
-III. Ethos
-----------
+Act III: Super-ego
+------------------
 
 - Clarity is Key
 - Documentation
