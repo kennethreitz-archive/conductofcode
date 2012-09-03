@@ -5,13 +5,8 @@ Act I: Id
 
 This part of the guide focuses on the philosophy behind great code.
 
-.. toctree::
-   :maxdepth: 2
-
-- Consistency
-- Clarity
-- API-Driven Development?
-
+-
+-
 
 
 Act II: Ego
