@@ -1,55 +1,36 @@
-Getting Started
+I. Philosophy
 ---------------
 
-This part of the guide focuses on setting up your Python environment.
+This part of the guide focuses on...
 
 .. toctree::
    :maxdepth: 2
 
-
-
-- Properly Install Python
-
-
-
-Writing Great Code
-------------------
-
-This part of the guide focuses on best practices for writing Python code.
+- Consistency
+- Clarity
+- API-Driven Development?
 
 
 
+II. Open Source
+---------------
 
-Scenario Guide
---------------
+This part of the guide focuses on best practices for writing code.
 
-This part of the guide focuses on tool and module advice based on
-different scenarios.
-
-
-
-
-Shipping Great Code
--------------------
-
-This part of the guide focuses on deploying your Python code.
+- obvious benefit (constraints foster creativity)
+- lawyer up
+- README
+- LICENSE
 
 
+III. Ethos
+----------
 
-Development Environment
------------------------
-
-
-
-
-Additional Notes
-----------------
-
-This part of the guide, which is mostly prose, begins with some
-background information about Python, then focuses on next steps.
-
-
-
+- Clarity is Key
+- Documentation
+- Community
+- Contributions and BDFL
+- Code of Conduct
 
 
 --------------------------------------

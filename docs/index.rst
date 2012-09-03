@@ -1,13 +1,17 @@
 The Conduct of Code
 ===================
 
-Welcome to The Hitchhiker's Guide to Python. `DON'T PANIC! <http://www.amazon.com/gp/product/B0043M4ZH0/ref=as_li_ss_tl?ie=UTF8&tag=bookforkind-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=B0043M4ZH0>`_
+In our busy lives, we have to take time to reflect. It's easy to forget why we code.
 
-**This guide is currently under heavy development, and is mostly a skeleton at
-the moment.**  If you'd like to help, `fork us on GitHub <https://github.com/kennethreitz/python-guide>`_!
+Great code is craft — a reflection of the person creating it.
 
-This *opinionated* guide exists to provide both novice and expert Python
-developers a best-practice handbook to the installation, configuration, and
-usage of Python on a daily basis.
+- Concise
+- Consistient
+- Sustainable
+- Approachable
+
+Let's focus on why.
+
+
 
 .. include:: contents.rst.inc
