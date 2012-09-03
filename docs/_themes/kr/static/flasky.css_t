@@ -95,6 +95,9 @@ div.sphinxsidebarwrapper p.logo {
     margin: -10px 0 0 -20px;
     text-align: center;
 }
+div.sphinxsidebarwrapper h1 {
+    font-size: 25px;
+}
 
 div.sphinxsidebar h3,
 div.sphinxsidebar h4 {

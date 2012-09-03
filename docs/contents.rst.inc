@@ -1,7 +1,9 @@
 Act I: Id
 ---------
 
-This part of the guide focuses on...
+*Id* is the set of uncoordinated instinctual trends in the human psyche.
+
+This part of the guide focuses on the philosophy behind great code.
 
 .. toctree::
    :maxdepth: 2
@@ -15,7 +17,9 @@ This part of the guide focuses on...
 Act II: Ego
 -----------
 
-This part of the guide focuses on best practices for writing code.
+*Ego* is the organized and realistic role of the human psyche.
+
+This part of the guide focuses on best practices for organizing and writing code.
 
 - obvious benefit (constraints foster creativity)
 - lawyer up
@@ -26,6 +30,10 @@ This part of the guide focuses on best practices for writing code.
 Act III: Super-ego
 ------------------
 
+*Super-ego* is the critical and moralizing role of the human psyche.
+
+This part of the guide focuses on the ethos of great code communities.
+
 - Clarity is Key
 - Documentation
 - Community
@@ -33,7 +41,20 @@ Act III: Super-ego
 - Code of Conduct
 
 
---------------------------------------
+--------------------
+
+
+Appendix A: Resources
+---------------------
+
+For further reading...
+
+- Semantic Versioning
+- The Architecture of Open Source Applications
+- *&c*
+
+Appendix B: Meta
+----------------
 
 Contibution notes and legal information are here (for those interested).
 
